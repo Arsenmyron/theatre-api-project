@@ -1,9 +1,5 @@
-from django.shortcuts import get_object_or_404
-
-from rest_framework import status, permissions, generics, serializers
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
-from rest_framework.views import APIView
+from rest_framework import permissions, generics, serializers
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 
 from theatre.models import (
     Actor,
@@ -11,28 +7,27 @@ from theatre.models import (
     TheatreHall,
     Performance,
     Reservation,
-    Ticket,
     Review,
     Play,
 )
 from theatre.serializers import (
-    PlaySerializer,
     ReviewSerializer,
     ActorSerializer,
     GenreSerializer,
     PerformanceSerializer,
     ReservationSerializer,
-    TicketSerializer,
     PlayListSerializer,
     PlayPostSerializer,
     PlayDetailSerializer,
     TheatreHallSerializer,
+    ReservationDetailSerializer,
 )
+from theatre.permissions import IsAdminOrIfAuthenticatedReadOnly
 
 
 class PlayListView(generics.ListCreateAPIView):
     queryset = Play.objects.prefetch_related("genres", "actors")
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [IsAdminOrIfAuthenticatedReadOnly]
 
     def get_serializer_class(self):
         if self.request.method == "GET":
@@ -55,27 +50,42 @@ class PlayListView(generics.ListCreateAPIView):
 
 
 class PlayDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Play.objects.all()
-    permission_classes = [permissions.AllowAny]
+    queryset = Play.objects.prefetch_related("genres", "actors", "reviews")
+    permission_classes = [IsAdminOrIfAuthenticatedReadOnly]
     serializer_class = PlayDetailSerializer
 
 
 class ActorListView(generics.ListCreateAPIView):
     queryset = Actor.objects.all()
     serializer_class = ActorSerializer
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [IsAdminOrIfAuthenticatedReadOnly]
+
+
+class ActorDetailView(generics.RetrieveDestroyAPIView):
+    queryset = Actor.objects.all()
+    serializer_class = ActorSerializer
+    permission_classes = [IsAdminOrIfAuthenticatedReadOnly]
 
 
 class GenreListView(generics.ListCreateAPIView):
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [IsAdminOrIfAuthenticatedReadOnly]
+
+
+class GenreDetailView(generics.RetrieveDestroyAPIView):
+    queryset = Genre.objects.all()
+    serializer_class = GenreSerializer
+    permission_classes = [IsAdminOrIfAuthenticatedReadOnly]
 
 
 class PerformanceListView(generics.ListAPIView):
-    queryset = Performance.objects.all()
+    queryset = Performance.objects.select_related(
+        "play", "theatre_hall"
+    ).prefetch_related("play__genres")
+
     serializer_class = PerformanceSerializer
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [IsAdminOrIfAuthenticatedReadOnly]
 
     def get_queryset(self):
         queryset = self.queryset
@@ -98,9 +108,9 @@ class PerformanceListView(generics.ListAPIView):
 
 
 class ReviewListView(generics.ListCreateAPIView):
-    queryset = Review.objects.all()
+    queryset = Review.objects.select_related("user", "play")
     serializer_class = ReviewSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -119,8 +129,8 @@ class ReservationListView(generics.ListCreateAPIView):
 
 
 class ReservationDetailView(generics.RetrieveDestroyAPIView):
-    queryset = Reservation.objects.all()
-    serializer_class = ReservationSerializer
+    queryset = Reservation.objects.select_related("user").prefetch_related("tickets")
+    serializer_class = ReservationDetailSerializer
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
@@ -130,6 +140,7 @@ class ReservationDetailView(generics.RetrieveDestroyAPIView):
 class TheatreHallListView(generics.ListCreateAPIView):
     queryset = TheatreHall.objects.all()
     serializer_class = TheatreHallSerializer
+    permission_classes = [IsAdminOrIfAuthenticatedReadOnly]
 
     def get_queryset(self):
         queryset = self.queryset
