@@ -40,6 +40,19 @@ class PlayListView(generics.ListCreateAPIView):
         elif self.request.method == "POST":
             return PlayPostSerializer
 
+    def get_queryset(self):
+        queryset = self.queryset
+
+        title = self.request.query_params.get("title", None)
+        if title:
+            queryset = queryset.filter(title__icontains=title)
+
+        genre_id = self.request.query_params.get("genre", None)
+        if genre_id:
+            queryset = queryset.filter(genres=genre_id)
+
+        return queryset
+
 
 class PlayDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Play.objects.all()
@@ -63,6 +76,25 @@ class PerformanceListView(generics.ListAPIView):
     queryset = Performance.objects.all()
     serializer_class = PerformanceSerializer
     permission_classes = [permissions.AllowAny]
+
+    def get_queryset(self):
+        queryset = self.queryset
+
+        title = self.request.query_params.get("title", None)
+        if title:
+            queryset = queryset.filter(play__title__icontains=title)
+
+        genre_id = self.request.query_params.get("genre", None)
+        if genre_id:
+            queryset = queryset.filter(play__genres=genre_id)
+
+        sort_by = self.request.query_params.get("sort_by", None)
+        if sort_by == "date":
+            queryset = queryset.order_by("show_time")
+        elif sort_by == "-date":
+            queryset = queryset.order_by("-show_time")
+
+        return queryset
 
 
 class ReviewListView(generics.ListCreateAPIView):
@@ -98,6 +130,15 @@ class ReservationDetailView(generics.RetrieveDestroyAPIView):
 class TheatreHallListView(generics.ListCreateAPIView):
     queryset = TheatreHall.objects.all()
     serializer_class = TheatreHallSerializer
+
+    def get_queryset(self):
+        queryset = self.queryset
+
+        name = self.request.query_params.get("name", None)
+        if name:
+            queryset = queryset.filter(name__icontains=name)
+
+        return queryset
 
     def perform_create(self, serializer):
         name = serializer.validated_data["name"]
