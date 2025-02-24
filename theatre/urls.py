@@ -27,3 +27,5 @@ urlpatterns = [
     ),
     path("theatre-halls/", TheatreHallListView.as_view(), name="theatre-hall-list"),
 ]
+
+app_name = "theatre"

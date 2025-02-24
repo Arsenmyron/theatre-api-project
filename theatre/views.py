@@ -31,7 +31,7 @@ from theatre.serializers import (
 
 
 class PlayListView(generics.ListCreateAPIView):
-    queryset = Play.objects.all()
+    queryset = Play.objects.prefetch_related("genres", "actors")
     permission_classes = [permissions.AllowAny]
 
     def get_serializer_class(self):
@@ -75,9 +75,15 @@ class ReviewListView(generics.ListCreateAPIView):
 
 
 class ReservationListView(generics.ListCreateAPIView):
-    queryset = Reservation.objects.all()
+    queryset = Reservation.objects.select_related("user").prefetch_related("tickets")
     serializer_class = ReservationSerializer
     permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return self.queryset.filter(user=self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class ReservationDetailView(generics.RetrieveDestroyAPIView):
