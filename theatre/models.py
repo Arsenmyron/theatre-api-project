@@ -33,7 +33,7 @@ class Play(models.Model):
     )
     rating = models.DecimalField(
         max_digits=3,
-        decimal_places=2,
+        decimal_places=1,
         blank=True,
         null=True,
     )
@@ -42,10 +42,9 @@ class Play(models.Model):
         return f"{self.title} ({self.rating})"
 
     def update_rating(self):
-        avg_rating = self.reviews.aggregate(Avg("rating"))["rating__avg"]
-        if avg_rating:
-            self.rating = round(avg_rating, 2)
-            self.save()
+        avg_rating = self.reviews.aggregate(avg=Avg("rating"))["avg"]
+        self.rating = avg_rating if avg_rating else 0
+        self.save()
 
 
 class TheatreHall(models.Model):
@@ -131,7 +130,7 @@ class Review(models.Model):
         related_name="reviews",
     )
     rating = models.SmallIntegerField(choices=RATING_CHOICES)
-    comment = models.TextField(blank=True, null=True)
+    text = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -139,3 +138,7 @@ class Review(models.Model):
 
     def __str__(self):
         return f"Review by {self.user} for {self.play.title}: ({self.rating})"
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        self.play.update_rating()
