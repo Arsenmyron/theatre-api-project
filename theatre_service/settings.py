@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "theatre",
     "user",
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -134,6 +135,7 @@ REST_FRAMEWORK = {
         "rest_framework.parsers.JSONParser",
         "rest_framework.parsers.FormParser",
     ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
 SIMPLE_JWT = {
