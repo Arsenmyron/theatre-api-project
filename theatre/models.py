@@ -1,6 +1,9 @@
+import os
+
 from django.conf import settings
 from django.db import models
 from django.db.models import Avg
+from django.utils.text import slugify
 
 
 class Actor(models.Model):
@@ -16,6 +19,12 @@ class Genre(models.Model):
 
     def __str__(self):
         return self.name
+
+
+def play_image_upload_path(instance, filename):
+    ext = filename.split(".")[-1]
+    filename = f"uploaded-{slugify(instance.title)}.{ext}"
+    return os.path.join("plays/", filename)
 
 
 class Play(models.Model):
@@ -37,7 +46,7 @@ class Play(models.Model):
         blank=True,
         null=True,
     )
-    image = models.ImageField(upload_to="plays/", blank=True, null=True)
+    image = models.ImageField(upload_to=play_image_upload_path, blank=True, null=True)
 
     def __str__(self):
         return f"{self.title} ({self.rating})"

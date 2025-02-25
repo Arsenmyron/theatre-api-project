@@ -10,6 +10,7 @@ from theatre.views import (
     ReservationDetailView,
     PlayDetailView,
     TheatreHallListView,
+    PlayImageUpdateView,
 )
 
 urlpatterns = [
@@ -17,6 +18,11 @@ urlpatterns = [
     path("genres/", GenreListView.as_view(), name="genre-list"),
     path("plays/", PlayListView.as_view(), name="play-list"),
     path("plays/<int:pk>/", PlayDetailView.as_view(), name="play-detail"),
+    path(
+        "plays/<int:pk>/upload-image/",
+        PlayImageUpdateView.as_view(),
+        name="play-image-upload",
+    ),
     path("performances/", PerformanceListView.as_view(), name="performance-list"),
     path("reviews/", ReviewListView.as_view(), name="review-list"),
     path("reservations/", ReservationListView.as_view(), name="reservation-list"),

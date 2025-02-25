@@ -1,4 +1,7 @@
-from rest_framework import permissions, generics, serializers
+from django.shortcuts import get_object_or_404
+from rest_framework import generics, serializers, status, permissions
+from rest_framework.generics import UpdateAPIView
+from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 
 from theatre.models import (
@@ -21,8 +24,19 @@ from theatre.serializers import (
     PlayDetailSerializer,
     TheatreHallSerializer,
     ReservationDetailSerializer,
+    PlayImageSerializer,
 )
 from theatre.permissions import IsAdminOrIfAuthenticatedReadOnly
+
+
+class PlayImageUpdateView(UpdateAPIView):
+    queryset = Play.objects.all()
+    parser_classes = [MultiPartParser, FormParser]
+    serializer_class = PlayImageSerializer
+    permission_classes = [permissions.AllowAny]
+
+    def get_object(self):
+        return get_object_or_404(Play, pk=self.kwargs["pk"])
 
 
 class PlayListView(generics.ListCreateAPIView):

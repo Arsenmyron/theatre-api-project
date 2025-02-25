@@ -39,13 +39,19 @@ class GenreSerializer(serializers.ModelSerializer):
         fields = ("id", "name")
 
 
+class PlayImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Play
+        fields = ("image",)
+
+
 class PlaySerializer(serializers.ModelSerializer):
     actors = ActorSerializer(many=True)
     genres = GenreSerializer(many=True)
 
     class Meta:
         model = Play
-        fields = ("id", "title", "rating", "description", "actors", "genres")
+        fields = ("id", "title", "rating", "description", "image", "actors", "genres")
 
 
 class PlayListSerializer(PlaySerializer):
@@ -64,6 +70,7 @@ class PlayListSerializer(PlaySerializer):
             "actors",
             "genres",
             "reviews",
+            "image",
         )
 
     def get_reviews(self, obj):
@@ -147,8 +154,12 @@ class TicketSerializer(serializers.ModelSerializer):
     )
     row = serializers.IntegerField()
     seat = serializers.IntegerField()
-    performance_place = serializers.CharField(source="performance.theatre_hall.name", read_only=True)
-    show_time = serializers.DateTimeField(source="performance.show_time", read_only=True)
+    performance_place = serializers.CharField(
+        source="performance.theatre_hall.name", read_only=True
+    )
+    show_time = serializers.DateTimeField(
+        source="performance.show_time", read_only=True
+    )
 
     class Meta:
         model = Ticket
