@@ -132,15 +132,6 @@ class PlayTitleSerializer(serializers.ModelSerializer):
         fields = ("title",)
 
 
-class TicketPerformanceSerializer(serializers.ModelSerializer):
-    performance_place = serializers.CharField(source="performance.theatre_hall.name")
-    show_time = serializers.DateTimeField(source="performance.show_time")
-
-    class Meta:
-        model = Ticket
-        fields = ("performance_place", "show_time")
-
-
 class PerformanceSerializer(serializers.ModelSerializer):
     play = PlayTitleSerializer(read_only=True)
     theatre_hall = TheatreHallNameSerializer(read_only=True)
@@ -156,10 +147,12 @@ class TicketSerializer(serializers.ModelSerializer):
     )
     row = serializers.IntegerField()
     seat = serializers.IntegerField()
+    performance_place = serializers.CharField(source="performance.theatre_hall.name", read_only=True)
+    show_time = serializers.DateTimeField(source="performance.show_time", read_only=True)
 
     class Meta:
         model = Ticket
-        fields = ("id", "row", "seat", "performance")
+        fields = ("id", "row", "seat", "performance", "performance_place", "show_time")
 
     def validate(self, data):
         if Ticket.objects.filter(
@@ -172,7 +165,7 @@ class TicketSerializer(serializers.ModelSerializer):
 
 
 class ReservationSerializer(serializers.ModelSerializer):
-    tickets = TicketPerformanceSerializer(many=True)
+    tickets = TicketSerializer(many=True)
 
     class Meta:
         model = Reservation
