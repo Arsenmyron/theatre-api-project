@@ -37,6 +37,7 @@ class Play(models.Model):
         blank=True,
         null=True,
     )
+    image = models.ImageField(upload_to="plays/", blank=True, null=True)
 
     def __str__(self):
         return f"{self.title} ({self.rating})"
