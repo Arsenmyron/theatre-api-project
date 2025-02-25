@@ -1,0 +1,767 @@
+[
+{
+    "model": "theatre.actor",
+    "pk": 1,
+    "fields": {
+        "first_name": "John",
+        "last_name": "Smith"
+    }
+},
+{
+    "model": "theatre.actor",
+    "pk": 2,
+    "fields": {
+        "first_name": "Emma",
+        "last_name": "Johnson"
+    }
+},
+{
+    "model": "theatre.actor",
+    "pk": 3,
+    "fields": {
+        "first_name": "Michael",
+        "last_name": "Brown"
+    }
+},
+{
+    "model": "theatre.actor",
+    "pk": 4,
+    "fields": {
+        "first_name": "Olivia",
+        "last_name": "Davis"
+    }
+},
+{
+    "model": "theatre.actor",
+    "pk": 5,
+    "fields": {
+        "first_name": "William",
+        "last_name": "Miller"
+    }
+},
+{
+    "model": "theatre.actor",
+    "pk": 6,
+    "fields": {
+        "first_name": "Toto",
+        "last_name": "Marzaghlli"
+    }
+},
+{
+    "model": "theatre.actor",
+    "pk": 7,
+    "fields": {
+        "first_name": "Mico",
+        "last_name": "Guerrero"
+    }
+},
+{
+    "model": "theatre.actor",
+    "pk": 8,
+    "fields": {
+        "first_name": "Palia",
+        "last_name": "Modci"
+    }
+},
+{
+    "model": "theatre.actor",
+    "pk": 9,
+    "fields": {
+        "first_name": "Pablo",
+        "last_name": "Estromio"
+    }
+},
+{
+    "model": "theatre.actor",
+    "pk": 10,
+    "fields": {
+        "first_name": "Phillipe",
+        "last_name": "Simpsono"
+    }
+},
+{
+    "model": "theatre.actor",
+    "pk": 11,
+    "fields": {
+        "first_name": "Camara",
+        "last_name": "Stone"
+    }
+},
+{
+    "model": "theatre.actor",
+    "pk": 12,
+    "fields": {
+        "first_name": "Betty",
+        "last_name": "Cornhill"
+    }
+},
+{
+    "model": "theatre.actor",
+    "pk": 13,
+    "fields": {
+        "first_name": "Lesya",
+        "last_name": "Rudnytska"
+    }
+},
+{
+    "model": "theatre.actor",
+    "pk": 14,
+    "fields": {
+        "first_name": "Ostap",
+        "last_name": "Veres"
+    }
+},
+{
+    "model": "theatre.actor",
+    "pk": 15,
+    "fields": {
+        "first_name": "Poji",
+        "last_name": "Moyia"
+    }
+},
+{
+    "model": "theatre.actor",
+    "pk": 16,
+    "fields": {
+        "first_name": "Ozzy",
+        "last_name": "Osbourne"
+    }
+},
+{
+    "model": "theatre.actor",
+    "pk": 17,
+    "fields": {
+        "first_name": "Iosyp",
+        "last_name": "Shmidt"
+    }
+},
+{
+    "model": "theatre.genre",
+    "pk": 1,
+    "fields": {
+        "name": "Tragedy"
+    }
+},
+{
+    "model": "theatre.genre",
+    "pk": 2,
+    "fields": {
+        "name": "Comedy"
+    }
+},
+{
+    "model": "theatre.genre",
+    "pk": 3,
+    "fields": {
+        "name": "Drama"
+    }
+},
+{
+    "model": "theatre.genre",
+    "pk": 4,
+    "fields": {
+        "name": "Melodrama"
+    }
+},
+{
+    "model": "theatre.genre",
+    "pk": 5,
+    "fields": {
+        "name": "Farce"
+    }
+},
+{
+    "model": "theatre.genre",
+    "pk": 6,
+    "fields": {
+        "name": "Satire"
+    }
+},
+{
+    "model": "theatre.genre",
+    "pk": 7,
+    "fields": {
+        "name": "Musical"
+    }
+},
+{
+    "model": "theatre.genre",
+    "pk": 8,
+    "fields": {
+        "name": "Opera"
+    }
+},
+{
+    "model": "theatre.genre",
+    "pk": 9,
+    "fields": {
+        "name": "Tragicomedy"
+    }
+},
+{
+    "model": "theatre.genre",
+    "pk": 10,
+    "fields": {
+        "name": "Fantasy"
+    }
+},
+{
+    "model": "theatre.genre",
+    "pk": 11,
+    "fields": {
+        "name": "Absurdism"
+    }
+},
+{
+    "model": "theatre.genre",
+    "pk": 12,
+    "fields": {
+        "name": "One-Act Play"
+    }
+},
+{
+    "model": "theatre.genre",
+    "pk": 13,
+    "fields": {
+        "name": "Historical"
+    }
+},
+{
+    "model": "theatre.genre",
+    "pk": 14,
+    "fields": {
+        "name": "Action"
+    }
+},
+{
+    "model": "theatre.genre",
+    "pk": 15,
+    "fields": {
+        "name": "Thriller"
+    }
+},
+{
+    "model": "theatre.play",
+    "pk": 1,
+    "fields": {
+        "title": "Hamlet",
+        "description": "A tragedy by William Shakespeare. The ghost of the King of Denmark tells his son Hamlet to avenge his murder by killing the new king, Hamlet's uncle. Hamlet feigns madness, contemplates life and death, and seeks revenge. His uncle, fearing for his life, also devises plots to kill Hamlet.",
+        "rating": "3.5",
+        "image": "plays/uploaded-hamlet.jpeg",
+        "actors": [
+            2,
+            3,
+            4,
+            5,
+            6
+        ],
+        "genres": [
+            1,
+            3
+        ]
+    }
+},
+{
+    "model": "theatre.play",
+    "pk": 2,
+    "fields": {
+        "title": "The Phantom of the Opera",
+        "description": "A musical about a masked figure haunting an opera house",
+        "rating": null,
+        "image": "",
+        "actors": [
+            12,
+            13,
+            14,
+            15
+        ],
+        "genres": [
+            3,
+            7,
+            8
+        ]
+    }
+},
+{
+    "model": "theatre.play",
+    "pk": 3,
+    "fields": {
+        "title": "Les Misérables",
+        "description": "A story of love, revolution, and redemption in France.",
+        "rating": "4.5",
+        "image": "",
+        "actors": [
+            5,
+            6,
+            7,
+            8
+        ],
+        "genres": [
+            2,
+            3,
+            4,
+            5,
+            6
+        ]
+    }
+},
+{
+    "model": "theatre.play",
+    "pk": 4,
+    "fields": {
+        "title": "Long Day's Journey Into Night by Eugene O'Neill",
+        "description": "This autobiographical play about O'Neill's young adulthood scorches from start to finish. You can feel the rawness as soon as it starts, as a man—along with his two adult sons—strives to ensure that his wife remains serene after a stint in rehab for morphine addiction. It goes downhill from there as she starts using again and all three guys hit the bottle. Written from a place of utter rawness, this drama stands at a pinnacle of the American family drama.",
+        "rating": null,
+        "image": "",
+        "actors": [],
+        "genres": []
+    }
+},
+{
+    "model": "theatre.play",
+    "pk": 5,
+    "fields": {
+        "title": "Fences by August Wilson",
+        "description": "Theoretically any of Wilson's 10 plays chronicling the African-American experience in Pittsburgh during the last century would easily fit onto this list, but this one stands apart from the others because of its tremendous heart and its commanding central figure who reaches almost tragic dimensions. It's little wonder that the play, set in the 1950s and centering on a former Negro league baseball pitcher struggling to provide for his family and battling against his bitterness, has attracted actors such as James Earl Jones and Denzel Washington.",
+        "rating": null,
+        "image": "",
+        "actors": [
+            1,
+            2,
+            3,
+            4,
+            13,
+            14
+        ],
+        "genres": [
+            5,
+            6,
+            9,
+            12
+        ]
+    }
+},
+{
+    "model": "theatre.play",
+    "pk": 7,
+    "fields": {
+        "title": "Another Brick in the Wall!",
+        "description": "Insane & tragically Play about one of the most popular rock-bands of all time - Pink Floyd.",
+        "rating": null,
+        "image": "",
+        "actors": [
+            2,
+            3,
+            4,
+            5
+        ],
+        "genres": [
+            1,
+            3,
+            7,
+            13
+        ]
+    }
+},
+{
+    "model": "theatre.play",
+    "pk": 8,
+    "fields": {
+        "title": "Some new",
+        "description": "Some new test play",
+        "rating": null,
+        "image": "plays/Знімок_екрана_2025-02-06_104935.png",
+        "actors": [
+            10,
+            11,
+            12
+        ],
+        "genres": [
+            4,
+            5,
+            6
+        ]
+    }
+},
+{
+    "model": "theatre.play",
+    "pk": 9,
+    "fields": {
+        "title": "second test play",
+        "description": "test play to test image saving",
+        "rating": null,
+        "image": "plays/uploaded-second-test-play.png",
+        "actors": [
+            2,
+            3,
+            4
+        ],
+        "genres": [
+            3,
+            4
+        ]
+    }
+},
+{
+    "model": "theatre.play",
+    "pk": 10,
+    "fields": {
+        "title": "Soethig",
+        "description": "asddsasddsaasd",
+        "rating": null,
+        "image": "plays/uploaded-soethig.jpeg",
+        "actors": [],
+        "genres": []
+    }
+},
+{
+    "model": "theatre.theatrehall",
+    "pk": 1,
+    "fields": {
+        "name": "Civic Repertory Theatre",
+        "rows": 15,
+        "seats_in_row": 50
+    }
+},
+{
+    "model": "theatre.theatrehall",
+    "pk": 2,
+    "fields": {
+        "name": "Abbey's Park Theatre",
+        "rows": 13,
+        "seats_in_row": 65
+    }
+},
+{
+    "model": "theatre.theatrehall",
+    "pk": 3,
+    "fields": {
+        "name": "B.S. Moss's Broadway Theatre",
+        "rows": 20,
+        "seats_in_row": 70
+    }
+},
+{
+    "model": "theatre.theatrehall",
+    "pk": 4,
+    "fields": {
+        "name": "Belasco Theatre",
+        "rows": 16,
+        "seats_in_row": 60
+    }
+},
+{
+    "model": "theatre.theatrehall",
+    "pk": 5,
+    "fields": {
+        "name": "Blanchard's Amphitheatre",
+        "rows": 25,
+        "seats_in_row": 100
+    }
+},
+{
+    "model": "theatre.theatrehall",
+    "pk": 6,
+    "fields": {
+        "name": "Burton's Chambers Street Theatre",
+        "rows": 12,
+        "seats_in_row": 30
+    }
+},
+{
+    "model": "theatre.theatrehall",
+    "pk": 7,
+    "fields": {
+        "name": "Casino Theatre Roof Garden",
+        "rows": 20,
+        "seats_in_row": 45
+    }
+},
+{
+    "model": "theatre.theatrehall",
+    "pk": 8,
+    "fields": {
+        "name": "Greenwich Village Theatre",
+        "rows": 10,
+        "seats_in_row": 40
+    }
+},
+{
+    "model": "theatre.theatrehall",
+    "pk": 9,
+    "fields": {
+        "name": "Hollywood Theatre",
+        "rows": 20,
+        "seats_in_row": 85
+    }
+},
+{
+    "model": "theatre.theatrehall",
+    "pk": 10,
+    "fields": {
+        "name": "Bernard B. Jacobs Theatre",
+        "rows": 22,
+        "seats_in_row": 51
+    }
+},
+{
+    "model": "theatre.performance",
+    "pk": 1,
+    "fields": {
+        "play": 1,
+        "theatre_hall": 6,
+        "show_time": "2025-02-23T20:51:04Z"
+    }
+},
+{
+    "model": "theatre.performance",
+    "pk": 2,
+    "fields": {
+        "play": 2,
+        "theatre_hall": 2,
+        "show_time": "2025-02-23T20:51:13Z"
+    }
+},
+{
+    "model": "theatre.performance",
+    "pk": 3,
+    "fields": {
+        "play": 3,
+        "theatre_hall": 9,
+        "show_time": "2025-02-23T20:51:23Z"
+    }
+},
+{
+    "model": "theatre.reservation",
+    "pk": 1,
+    "fields": {
+        "created_at": "2025-02-23T20:47:34.821Z",
+        "user": 1
+    }
+},
+{
+    "model": "theatre.reservation",
+    "pk": 2,
+    "fields": {
+        "created_at": "2025-02-24T22:56:44.169Z",
+        "user": 1
+    }
+},
+{
+    "model": "theatre.reservation",
+    "pk": 3,
+    "fields": {
+        "created_at": "2025-02-24T22:57:53.356Z",
+        "user": 1
+    }
+},
+{
+    "model": "theatre.reservation",
+    "pk": 4,
+    "fields": {
+        "created_at": "2025-02-25T08:56:18.128Z",
+        "user": 2
+    }
+},
+{
+    "model": "theatre.ticket",
+    "pk": 1,
+    "fields": {
+        "row": 3,
+        "seat": 13,
+        "performance": 1,
+        "reservation": 1
+    }
+},
+{
+    "model": "theatre.ticket",
+    "pk": 2,
+    "fields": {
+        "row": 8,
+        "seat": 4,
+        "performance": 3,
+        "reservation": 1
+    }
+},
+{
+    "model": "theatre.ticket",
+    "pk": 3,
+    "fields": {
+        "row": 3,
+        "seat": 2,
+        "performance": 3,
+        "reservation": 1
+    }
+},
+{
+    "model": "theatre.ticket",
+    "pk": 4,
+    "fields": {
+        "row": 2,
+        "seat": 7,
+        "performance": 3,
+        "reservation": 2
+    }
+},
+{
+    "model": "theatre.ticket",
+    "pk": 5,
+    "fields": {
+        "row": 2,
+        "seat": 8,
+        "performance": 3,
+        "reservation": 2
+    }
+},
+{
+    "model": "theatre.ticket",
+    "pk": 6,
+    "fields": {
+        "row": 11,
+        "seat": 2,
+        "performance": 1,
+        "reservation": 3
+    }
+},
+{
+    "model": "theatre.ticket",
+    "pk": 7,
+    "fields": {
+        "row": 11,
+        "seat": 1,
+        "performance": 1,
+        "reservation": 3
+    }
+},
+{
+    "model": "theatre.ticket",
+    "pk": 8,
+    "fields": {
+        "row": 5,
+        "seat": 8,
+        "performance": 1,
+        "reservation": 4
+    }
+},
+{
+    "model": "theatre.ticket",
+    "pk": 9,
+    "fields": {
+        "row": 5,
+        "seat": 9,
+        "performance": 1,
+        "reservation": 4
+    }
+},
+{
+    "model": "theatre.review",
+    "pk": 1,
+    "fields": {
+        "play": 1,
+        "user": 1,
+        "rating": 4,
+        "text": "Amazing Play!",
+        "created_at": "2025-02-23T20:51:47.603Z"
+    }
+},
+{
+    "model": "theatre.review",
+    "pk": 2,
+    "fields": {
+        "play": 3,
+        "user": 1,
+        "rating": 4,
+        "text": "Good Play, but i don't know French...",
+        "created_at": "2025-02-23T20:52:16.790Z"
+    }
+},
+{
+    "model": "theatre.review",
+    "pk": 3,
+    "fields": {
+        "play": 2,
+        "user": 1,
+        "rating": 2,
+        "text": "Well Played! But i don't like it",
+        "created_at": "2025-02-23T20:52:55.383Z"
+    }
+},
+{
+    "model": "theatre.review",
+    "pk": 4,
+    "fields": {
+        "play": 1,
+        "user": 1,
+        "rating": 4,
+        "text": "It is better, than i expected.",
+        "created_at": "2025-02-24T09:53:22.173Z"
+    }
+},
+{
+    "model": "theatre.review",
+    "pk": 5,
+    "fields": {
+        "play": 1,
+        "user": 1,
+        "rating": 1,
+        "text": "Awful!\r\nPoor Yorick...",
+        "created_at": "2025-02-24T09:54:26.327Z"
+    }
+},
+{
+    "model": "theatre.review",
+    "pk": 6,
+    "fields": {
+        "play": 1,
+        "user": 1,
+        "rating": 5,
+        "text": "Yorick is a real badass! Definitely like!",
+        "created_at": "2025-02-24T09:55:40.322Z"
+    }
+},
+{
+    "model": "theatre.review",
+    "pk": 7,
+    "fields": {
+        "play": 3,
+        "user": 1,
+        "rating": 5,
+        "text": "I love French! And English! And Ukrainan! And German!\r\nGerman...?",
+        "created_at": "2025-02-24T09:59:46.968Z"
+    }
+},
+{
+    "model": "user.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$wjzgj2fbfkowehjb2LZnyA$WxIaOgmoYeDbbUIYKUf8QYqJDkpC7mGGHnMBFz6xjbs=",
+        "last_login": "2025-02-23T20:27:26Z",
+        "is_superuser": true,
+        "first_name": "Fuji",
+        "last_name": "Kuuma",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-02-23T20:26:43Z",
+        "email": "user@mail.com",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "user.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$NnchNVXBsa2TBFewQRTOsc$sm+yjR3r1hvFpUG94BX3OdnON1u6uaCqlpv0cX56QG4=",
+        "last_login": null,
+        "is_superuser": false,
+        "first_name": "Les`",
+        "last_name": "Kurbas",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-02-24T17:02:55Z",
+        "email": "lesyk@mail.com",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]
